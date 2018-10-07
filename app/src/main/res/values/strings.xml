@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">KotlinManual</string>
+
+    <string name="element_text">Element</string>
+    <string name="grid_layout_manager">Grid Layout Manager</string>
+    <string name="linear_layout_manager">Linear Layout Manager</string>
+    <string name="str_singleton">Kotlin单例模式示例</string>
+    <string name="str_static_fun">Kotlin静态方法示例</string>
+    <string name="str_recyclerview">Kotlin RecyclerView示例</string>
+</resources>
