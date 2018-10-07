@@ -5,12 +5,16 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.RadioGroup
 
 import com.alexlee1987.kotlinmanual.R
+import com.alexlee1987.kotlinmanual.utils.SPUtils
+import com.alexlee1987.kotlinmanual.utils.SharedPreferencesConstants
 
 /**
  * A simple [Fragment] subclass.
@@ -27,7 +31,7 @@ class RecyclerViewFragment : Fragment() {
     companion object {
         private const val TAG = "RecyclerViewFragment"
         private const val KEY_LAYOUT_MANAGER = "layoutManager"
-        private const val SPAN_COUNT = 2
+        private const val SPAN_COUNT = 3
         private const val DATASET_COUNT = 60
     }
 
@@ -47,7 +51,23 @@ class RecyclerViewFragment : Fragment() {
         // elements are laid out.
         layoutManager = LinearLayoutManager(activity)
 
-        currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER
+        val type = SPUtils.getInt(SharedPreferencesConstants.NAME_ACCOUNT_TOKEN_XML, SharedPreferencesConstants.KEY_LAYOUTMANAGERTYPE)
+        Log.i(TAG, "onCreateView type: $type")
+        currentLayoutManagerType = if (type == 0) LayoutManagerType.LINEAR_LAYOUT_MANAGER else LayoutManagerType.GRID_LAYOUT_MANAGER
+
+        val radioGroup: RadioGroup = rootView.findViewById(R.id.group_layout_manager)
+        val id = if (type == 0) R.id.linear_layout_rb else R.id.grid_layout_rb
+        radioGroup.check(id) // 重置保存的布局管理器
+        rootView.findViewById<RadioButton>(R.id.linear_layout_rb).setOnClickListener{
+            setRecyclerViewLayoutManager(LayoutManagerType.LINEAR_LAYOUT_MANAGER)
+            // 记录布局管理器状态
+            SPUtils.putInt(SharedPreferencesConstants.NAME_ACCOUNT_TOKEN_XML, SharedPreferencesConstants.KEY_LAYOUTMANAGERTYPE, 0)
+        }
+        rootView.findViewById<RadioButton>(R.id.grid_layout_rb).setOnClickListener{
+            setRecyclerViewLayoutManager(LayoutManagerType.GRID_LAYOUT_MANAGER)
+            // 记录布局管理器状态
+            SPUtils.putInt(SharedPreferencesConstants.NAME_ACCOUNT_TOKEN_XML, SharedPreferencesConstants.KEY_LAYOUTMANAGERTYPE, 1)
+        }
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.
@@ -58,14 +78,6 @@ class RecyclerViewFragment : Fragment() {
 
         // Set CustomAdapter as the adapter for RecyclerView.
         recyclerView.adapter = CustomAdapter(dataset)
-
-        rootView.findViewById<RadioButton>(R.id.linear_layout_rb).setOnClickListener{
-            setRecyclerViewLayoutManager(LayoutManagerType.LINEAR_LAYOUT_MANAGER)
-        }
-
-        rootView.findViewById<RadioButton>(R.id.grid_layout_rb).setOnClickListener{
-            setRecyclerViewLayoutManager(LayoutManagerType.GRID_LAYOUT_MANAGER)
-        }
 
         return rootView
     }
@@ -104,6 +116,6 @@ class RecyclerViewFragment : Fragment() {
     }
 
     private fun initDataSet() {
-        dataset = Array(DATASET_COUNT, {i -> "This is element # $i"})
+        dataset = Array(DATASET_COUNT) { i -> "Element $i"}
     }
 }

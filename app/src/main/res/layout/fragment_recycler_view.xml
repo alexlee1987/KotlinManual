@@ -3,6 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <RadioGroup
+        android:id="@+id/group_layout_manager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
