@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
+import com.alexlee1987.kotlinmanual.ankodemo.AnkoDemoActivity
 import com.alexlee1987.kotlinmanual.recyclerview.RecyclerViewActivity
 import com.alexlee1987.kotlinmanual.utils.CommonUtils
 import com.alexlee1987.kotlinmanual.utils.SingletonDemo
 import com.alexlee1987.kotlinmanual.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.*
+import java.lang.Thread.sleep
 
 class MainActivity : AppCompatActivity(), OnClickListener {
     // 常量定义
@@ -26,13 +29,18 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 ToastUtils.showShort(this, "单例模式示例运算结果为：" + SingletonDemo.INSTANCE.add(8, 110).toString())
 //                ToastUtils.showShort(this, "单例模式示例运算结果为：" + SingletonDemo.INSTANCE.sum(8, 120).toString())
 //                ToastUtils.showShort(this, "单例模式示例运算结果为：" + CommonUtils().sum(8, 120).toString())
+                return
             }
             R.id.btn_static_fun ->{
-                var res: String = getText(R.string.str_static_fun).toString() + ": " + CommonUtils.getCurTimes().toString()
+                var res: String = getText(R.string.str_static_fun).toString() + ": " + CommonUtils.getCurTimes().toString() + "ababab".formatted()
                 ToastUtils.showShort(this, res)
+                return
             }
             R.id.btn_recyclerview -> {
                 clazz = RecyclerViewActivity::class.java
+            }
+            R.id.btn_anko -> {
+                clazz = AnkoDemoActivity::class.java
             }
             else -> clazz = MainActivity::class.java
         }
@@ -53,6 +61,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         btn_singleton.setOnClickListener(this)
         btn_static_fun.setOnClickListener(this)
         btn_recyclerview.setOnClickListener(this)
+        btn_anko.setOnClickListener(this)
+    }
+
+    /**
+     * kotlin扩展函数：扩展String类的方法，有可能是String已有的，也有可能是Sting没有的
+     */
+    private fun String.formatted(): String {
+        return this.replace('a', 'b')
     }
     
 }

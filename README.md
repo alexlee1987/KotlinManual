@@ -9,4 +9,5 @@ KotlinManual可以说是Kotlin开发Android项目的说明手册，该工程主�
 - 常量val定义、变量var定义；
 - 延迟初始化lateinit的使用；
 - Kotlin语言实现SharedPreferences工具类；
+- 增加anko库常用功能如页面布局、跳转、toast、异步任务、Dialog、服务等使用方法；
 - 未完待续...
