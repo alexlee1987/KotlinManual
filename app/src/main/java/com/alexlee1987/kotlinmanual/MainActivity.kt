@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
+import com.alexlee1987.kotlinmanual.activity.RxJavaDemoActivity
 import com.alexlee1987.kotlinmanual.ankodemo.AnkoDemoActivity
 import com.alexlee1987.kotlinmanual.recyclerview.RecyclerViewActivity
 import com.alexlee1987.kotlinmanual.utils.CommonUtils
@@ -42,6 +43,9 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             R.id.btn_anko -> {
                 clazz = AnkoDemoActivity::class.java
             }
+            R.id.btn_rxjava -> {
+                clazz = RxJavaDemoActivity::class.java
+            }
             else -> clazz = MainActivity::class.java
         }
         if (clazz != null) {
@@ -62,6 +66,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         btn_static_fun.setOnClickListener(this)
         btn_recyclerview.setOnClickListener(this)
         btn_anko.setOnClickListener(this)
+        btn_rxjava.setOnClickListener(this)
     }
 
     /**

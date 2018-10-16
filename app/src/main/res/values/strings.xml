@@ -8,4 +8,5 @@
     <string name="str_static_fun">Kotlin静态方法示例</string>
     <string name="str_recyclerview">Kotlin RecyclerView示例</string>
     <string name="str_anko_demo">Anko库使用示例</string>
+    <string name="str_rxjava_demo">RxJava接入示例</string>
 </resources>
