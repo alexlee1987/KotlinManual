@@ -4,7 +4,7 @@ KotlinManual可以说是Kotlin开发Android项目的说明手册，该工程主�
 - Kotlin语言实现单例模式；
 - Kotlin语言实现全部静态方法；
 - Kotlin语言实现部分静态方法；
-- Kotlin语言实现RecyclerView；
+- Kotlin语言实现RecyclerView，网格布局GridLayoutManager增加动态变化每一行item的数量支持；
 - Lambda表达式的使用；
 - 常量val定义、变量var定义；
 - 延迟初始化lateinit的使用；

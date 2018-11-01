@@ -1,5 +1,6 @@
 package com.alexlee1987.kotlinmanual.recyclerview
 
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,6 +25,22 @@ class CustomAdapter(private val dateSet: Array<String>): RecyclerView.Adapter<Cu
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textView.text = dateSet[position]
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+
+        val layout = recyclerView.layoutManager
+        if (layout != null && layout is GridLayoutManager) {
+            layout.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                // 动态指定网格布局吗每一行的item数量
+                override fun getSpanSize(position: Int): Int {
+                    return if (position % 4 == 0) {
+                        layout.spanCount
+                    } else 1
+                }
+            }
+        }
     }
 
     companion object {

@@ -109,7 +109,9 @@ class RecyclerViewFragment : Fragment() {
         }
 
         with(recyclerView) {
+            // Set CustomAdapter as the adapter for RecyclerView.
             layoutManager = this@RecyclerViewFragment.layoutManager
+            adapter = CustomAdapter(dataset)
             scrollToPosition(scrollPosition)
         }
 
