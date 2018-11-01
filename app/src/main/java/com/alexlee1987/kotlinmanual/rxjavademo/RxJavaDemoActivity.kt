@@ -1,4 +1,4 @@
-package com.alexlee1987.kotlinmanual.activity
+package com.alexlee1987.kotlinmanual.rxjavademo
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

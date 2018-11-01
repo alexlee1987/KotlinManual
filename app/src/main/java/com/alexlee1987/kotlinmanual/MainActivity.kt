@@ -6,15 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
-import com.alexlee1987.kotlinmanual.activity.RxJavaDemoActivity
+import com.alexlee1987.kotlinmanual.rxjavademo.RxJavaDemoActivity
 import com.alexlee1987.kotlinmanual.ankodemo.AnkoDemoActivity
 import com.alexlee1987.kotlinmanual.recyclerview.RecyclerViewActivity
 import com.alexlee1987.kotlinmanual.utils.CommonUtils
 import com.alexlee1987.kotlinmanual.utils.SingletonDemo
 import com.alexlee1987.kotlinmanual.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.*
-import java.lang.Thread.sleep
 
 class MainActivity : AppCompatActivity(), OnClickListener {
     // 常量定义

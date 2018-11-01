@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".recyclerview.RecyclerViewActivity" />
         <activity android:name=".ankodemo.AnkoDemoActivity" />
-        <activity android:name=".activity.RxJavaDemoActivity"></activity>
+        <activity android:name=".rxjavademo.RxJavaDemoActivity"></activity>
     </application>
 
 </manifest>
